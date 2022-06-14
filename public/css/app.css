@@ -17197,6 +17197,40 @@ body {
     line-height: 2.5rem;
   }
 }
+.post .card {
+  flex-direction: row;
+  align-items: center;
+}
+
+.post .card-title {
+  font-weight: bold;
+}
+
+.post .card img {
+  width: 18%;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+@media only screen and (max-width: 768px) {
+  a {
+    display: none;
+  }
+  .post .card-body {
+    padding: 0.5em 1.2em;
+  }
+  .post .card-body .card-text {
+    margin: 0;
+  }
+  .post .card img {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .post .card img {
+    width: 40%;
+  }
+}
 .footer {
   padding-top: 5rem;
   padding-bottom: 5rem;

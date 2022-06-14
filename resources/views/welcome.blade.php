@@ -27,114 +27,17 @@
               <h4 class="page-section-heading text-center text-uppercase mb-0">Categories</h4>
               <!-- Portfolio Grid Items-->
               <div class="row justify-content-center pt-4">
-                  <!-- Portfolio Item 1-->
-                  <div class="col-md-2 col-lg-2 mb-5">
-                      <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                              <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
-                          </div>
-                          <img class="img-fluid" src="/img/cabin.png" alt="..." />
-                      </div>
-                  </div>
-                  <!-- Portfolio Item 2-->
-                  <div class="col-md-2 col-lg-2 mb-5">
-                      <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                              <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
-                          </div>
-                          <img class="img-fluid" src="/img/cake.png" alt="..." />
-                      </div>
-                  </div>
-                  <!-- Portfolio Item 3-->
-                  <div class="col-md-2 col-lg-2 mb-5">
-                      <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                              <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
-                          </div>
-                          <img class="img-fluid" src="/img/circus.png" alt="..." />
-                      </div>
-                  </div>
-                  <!-- Portfolio Item 4-->
-                  <div class="col-md-2 col-lg-2 mb-5 mb-lg-0">
-                      <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                              <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
-                          </div>
-                          <img class="img-fluid" src="/img/game.png" alt="..." />
-                      </div>
-                  </div>
-                  <!-- Portfolio Item 5-->
-                  <div class="col-md-2 col-lg-2 mb-5 mb-md-0">
-                      <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                              <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
-                          </div>
-                          <img class="img-fluid" src="/img/safe.png" alt="..." />
-                      </div>
-                  </div>
-                  <!-- Portfolio Item 6-->
-                  <div class="col-md-2 col-lg-2">
-                      <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                              <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
-                          </div>
-                          <img class="img-fluid" src="/img/submarine.png" alt="..." />
-                      </div>
-                  </div>
-                  <!-- Portfolio Item 1-->
-                  <div class="col-md-2 col-lg-2 mb-5">
+                @foreach($categories as $category)
+                <div class="col-md-2 col-lg-2 mb-5">
                     <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
                         </div>
-                        <img class="img-fluid" src="/img/cabin.png" alt="..." />
+                        <img class="img-fluid" src="{{ $category->icon }}" alt="..." />
+                        <p class="text-center">{{ $category->name }}</p>
                     </div>
                 </div>
-                <!-- Portfolio Item 2-->
-                <div class="col-md-2 col-lg-2 mb-5">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
-                        </div>
-                        <img class="img-fluid" src="/img/cake.png" alt="..." />
-                    </div>
-                </div>
-                <!-- Portfolio Item 3-->
-                <div class="col-md-2 col-lg-2 mb-5">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
-                        </div>
-                        <img class="img-fluid" src="/img/circus.png" alt="..." />
-                    </div>
-                </div>
-                <!-- Portfolio Item 4-->
-                <div class="col-md-2 col-lg-2 mb-5 mb-lg-0">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
-                        </div>
-                        <img class="img-fluid" src="/img/game.png" alt="..." />
-                    </div>
-                </div>
-                <!-- Portfolio Item 5-->
-                <div class="col-md-2 col-lg-2 mb-5 mb-md-0">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
-                        </div>
-                        <img class="img-fluid" src="/img/safe.png" alt="..." />
-                    </div>
-                </div>
-                <!-- Portfolio Item 6-->
-                <div class="col-md-2 col-lg-2">
-                    <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
-                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                            <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
-                        </div>
-                        <img class="img-fluid" src="/img/submarine.png" alt="..." />
-                    </div>
-                </div>
+                @endforeach
               </div>
           </div>
       </section>

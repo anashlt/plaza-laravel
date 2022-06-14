@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('landing');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,4 +23,7 @@ require __DIR__.'/auth.php';
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
+
+// Brows all ads
+Route::get('/a/latest', [App\Http\Controllers\HomeController::class, 'browse'])->name('browse');

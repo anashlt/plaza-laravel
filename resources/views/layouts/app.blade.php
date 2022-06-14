@@ -60,7 +60,7 @@
                         @endguest
                         
                         <li class="nav-item mx-0 mx-lg-1 mt-2">
-                          <button type="button" class="btn btn-light createAdBtn rounded">Create an Ad</button>
+                          <button type="button" class="btn btn-light createAdBtn rounded"><i class="bi bi-pin-fill"></i> Post an Ad</button>
                         </li>
                     </ul>
                 </div>
