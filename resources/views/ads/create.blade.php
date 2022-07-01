@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title',  'Post a new Ad')
+
+
 @section('content')
 <div class="container">
     <div class="adsContainer">
