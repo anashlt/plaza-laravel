@@ -1,24 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-  <div class="searchBar">
-      <div class="row justify-content-center">
-          <div class="col-md-8">
-            <div class="input-group input-group-lg mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1" style="height: 100%"><i class="bi bi-search"></i></span>
-              </div>
-              <input type="text" class="form-control bg-white w-50" placeholder="Search our database of ads..." aria-label="keyword" aria-describedby="basic-addon1">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1" style="height: 100%"><i class="bi bi-geo-alt-fill"></i></span>
-              </div>
-              <input type="text" class="form-control bg-white" placeholder="City/Region" aria-label="keyword" aria-describedby="basic-addon1">
-            </div>
-          </div>
-      </div>
-  </div>
-
+@include('components.search-bar')
 
     <div class="adsContainer">
         <div class="row justify-content-center"> 
