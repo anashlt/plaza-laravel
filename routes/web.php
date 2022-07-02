@@ -25,6 +25,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 
+Route::get('/search-auto',[App\Http\Controllers\HomeController::class, 'autocomplete'])->name('autocomplete');
+
 // Brows all ads
 Route::get('/a/latest', [App\Http\Controllers\HomeController::class, 'browse'])->name('browse');
 // Get ad by city

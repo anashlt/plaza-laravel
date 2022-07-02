@@ -42,6 +42,15 @@ class HomeController extends Controller
         ]);
     }
 
+    public function autocomplete(Request $request)
+    {
+        $data = Post::select("title as value", "id")
+        ->where('title', 'LIKE', '%'. $request->get('search'). '%')
+        ->get();
+
+        return response()->json($data);
+    }
+
     /**
      * Browse all the published ads
      * 
