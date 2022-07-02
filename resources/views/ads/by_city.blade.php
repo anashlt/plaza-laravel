@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
 @include('components.search-bar')
 
     <div class="adsContainer">

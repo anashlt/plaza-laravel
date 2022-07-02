@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
 @include('components.search-bar')
+
 
     <div class="adsContainer">
         <div class="row justify-content-center"> 
