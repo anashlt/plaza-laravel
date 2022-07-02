@@ -3,6 +3,7 @@
 @section('title',  $ad->title)
 
 @section('content')
+<div class="container">
 @include('components.search-bar')
 
     <div class="adsContainer">
