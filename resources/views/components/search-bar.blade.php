@@ -10,7 +10,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1" style="height: 100%"><i class="bi bi-geo-alt-fill"></i></span>
                 </div>
-                <input type="text" class="form-control bg-white" placeholder="City/Region" aria-label="keyword" aria-describedby="basic-addon1">
+                <input type="text" class="form-control bg-white" id="scity" name="c" placeholder="City/Region" aria-label="keyword" aria-describedby="basic-addon1">
                 <div class="input-group-prepend">
                   <button type="submit" id="basic-addon1" style="height: 100%;color:#fff" class="input-group-text btn-info"> Search</button>
                 </div>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\DashboardController::class, 'index'])->name('home');
 
-Route::get('/search-auto',[App\Http\Controllers\HomeController::class, 'autocomplete'])->name('autocomplete');
+// Search
+Route::get('/search', [App\Http\Controllers\HomeController::class, 'search'])->name('search');
+Route::get('/title-auto',[App\Http\Controllers\HomeController::class, 'titleAutocomplete'])->name('titleAutocomplete');
+Route::get('/city-auto',[App\Http\Controllers\HomeController::class, 'cityAutocomplete'])->name('cityAutocomplete');
 
 // Brows all ads
 Route::get('/a/latest', [App\Http\Controllers\HomeController::class, 'browse'])->name('browse');
