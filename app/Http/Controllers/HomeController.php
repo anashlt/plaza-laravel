@@ -41,11 +41,25 @@ class HomeController extends Controller
             'ads' => $ads
         ]);
     }
+    
+    public function search(Request $request)
+    {
+        return $request;
+    }
 
-    public function autocomplete(Request $request)
+    public function titleAutocomplete(Request $request)
     {
         $data = Post::select("title as value", "id")
         ->where('title', 'LIKE', '%'. $request->get('search'). '%')
+        ->get();
+
+        return response()->json($data);
+    }
+
+    public function cityAutocomplete(Request $request)
+    {
+        $data = City::select("name as value", "id")
+        ->where('name', 'LIKE', '%'. $request->get('search'). '%')
         ->get();
 
         return response()->json($data);

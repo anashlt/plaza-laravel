@@ -4,12 +4,11 @@ window.$ = window.jQuery = $;
 
 import 'jquery-ui/ui/widgets/autocomplete.js';
 
-var path = "/search-auto";
 
 $( "#search" ).autocomplete({
     source: function( request, response ) {
       $.ajax({
-        url: path,
+        url: "/title-auto",
         type: 'GET',
         dataType: "json",
         data: {
@@ -26,4 +25,26 @@ $( "#search" ).autocomplete({
        console.log(ui.item); 
        return false;
     }
-  });
+});
+
+$( "#scity" ).autocomplete({
+   source: function( request, response ) {
+     $.ajax({
+       url: "/city-auto",
+       type: 'GET',
+       dataType: "json",
+       data: {
+          search: request.term
+       },
+       success: function( data ) {
+          response( data );
+       }
+     });
+   },
+
+   select: function (event, ui) {
+      $('#scity').val(ui.item.label);
+      console.log(ui.item); 
+      return false;
+   }
+});
