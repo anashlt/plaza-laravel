@@ -6,7 +6,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use Illuminate\Support\Facades\Validator;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class AdController extends Controller
@@ -18,7 +18,7 @@ class AdController extends Controller
      */
     public function index($city, $category, $slug)
     {
-        $ad = Post::where('slug', $slug)->with('category')->with('user')->first();
+        $ad = Post::where('slug', $slug)->where('is_published', 1)->with('category')->with('user')->first();
         return view('ads.single', [
             'ad' => $ad
         ]);
@@ -38,24 +38,6 @@ class AdController extends Controller
     }
 
     /**
-     * Get a validator for an incoming post creation request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'title' => ['required', 'string', 'max:80'],
-            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:6048'],
-            'city' => ['required', 'integer'],
-            'category' => ['required', 'integer'],
-            'price' => ['numeric'],
-            'description' => ['required', 'string', 'max:600'],
-        ]);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StorePostRequest  $request
@@ -66,6 +48,14 @@ class AdController extends Controller
         $imagePath = $data->file('avatar');
         $imageName = $imagePath->getClientOriginalName();
         $path = $data->file('avatar')->storeAs('uploads', time().'_'.$imageName, 'public');
+
+        $validated = $data->validate([
+            'title' => ['required', 'string', 'max:80'],
+            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:6048'],
+            'city' => ['required', 'integer'],
+            'category' => ['required', 'integer'],
+            'description' => ['required', 'string', 'max:600'],
+        ]);
 
         Post::create([
             'title' => $data['title'],
@@ -78,7 +68,7 @@ class AdController extends Controller
             'slug' => Str::slug($data['title'], '_'),
         ]);
 
-        return 'Post created';
+        return view('ads.thank-you');
     }
 
     /**

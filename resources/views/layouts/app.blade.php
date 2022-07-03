@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -11,12 +10,17 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
     <div id="app"  class="d-flex flex-column min-vh-100">
@@ -74,7 +78,7 @@
         <footer class="mt-auto">
             <!-- Copyright Section-->
             <div class="copyright py-4 text-center text-white">
-                <div class="container"><small>Copyright &copy; {{ config('app.name', 'Laravel') }} 2022</small></div>
+                <div class="container"><small>Copyright &copy; {{ config('app.name', 'Plaza') }} 2022</small></div>
             </div>
         </footer>
     </div>

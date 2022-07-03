@@ -25,7 +25,10 @@ class HomeController extends Controller
     public function showAdByCategory($category)
     {
         $categoryId = Category::where('slug', $category)->first()->id;
-        $ads = Post::where('category_id', $categoryId)->get();
+        $ads = Post::where('category_id', $categoryId)
+        ->where('is_published', 1)
+        ->get();
+
         return view('ads.by_category', [
             'ads' => $ads
         ]);
@@ -35,7 +38,10 @@ class HomeController extends Controller
     {
         $categoryId = Category::where('slug', $category)->first()->id;
         $cityId = City::where('slug', $city)->first()->id;
-        $ads = Post::where('category_id', $categoryId)->where('city_id', $cityId)->get();
+        $ads = Post::where('category_id', $categoryId)
+        ->where('is_published', 1)  // get only published ads
+        ->where('city_id', $cityId)
+        ->get();
 
         return view('ads.by_city', [
             'ads' => $ads
@@ -44,13 +50,30 @@ class HomeController extends Controller
     
     public function search(Request $request)
     {
-        return $request;
+        // if(empty($request->get('q'))) 
+        // {
+        //     return redirect()->back();
+        // }
+
+        $cityId = City::where('name', $request->get('c'))->first()->id ?? '';
+
+        $ads = Post::when(empty($cityId),function($query) use ($request) {
+                $query->where('title', 'LIKE', $request->get('q'). '%');
+            } , function($query) use ($request, $cityId){
+                    $query->where('title', 'LIKE', $request->get('q'). '%')
+                        ->where('city_id', $cityId);
+            })->get(); 
+            
+        return view('ads.search', [
+            'ads' => $ads
+        ]);
     }
 
     public function titleAutocomplete(Request $request)
     {
         $data = Post::select("title as value", "id")
         ->where('title', 'LIKE', '%'. $request->get('search'). '%')
+        ->where('is_published', 1)
         ->get();
 
         return response()->json($data);
@@ -59,7 +82,7 @@ class HomeController extends Controller
     public function cityAutocomplete(Request $request)
     {
         $data = City::select("name as value", "id")
-        ->where('name', 'LIKE', '%'. $request->get('search'). '%')
+        ->where('name', 'LIKE', $request->get('search'). '%')
         ->get();
 
         return response()->json($data);
@@ -73,7 +96,11 @@ class HomeController extends Controller
 
     public function browse() 
     {
-        $ads = Post::where('is_published', 1)->with('category')->with('getCity')->get(); // get only published ads
+        $ads = Post::where('is_published', 1)  // get only published ads
+        ->with('category')
+        ->with('getCity')
+        ->get();
+
         return view('ads.browse', [
             'ads' => $ads,
         ]);

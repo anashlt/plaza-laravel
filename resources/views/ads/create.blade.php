@@ -18,6 +18,15 @@
             <div class="col-md-12 bg-white">
                 <div style="padding:10px">
                     <h4>Post a new ad</h4>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="post" action="/ads/post/create" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
