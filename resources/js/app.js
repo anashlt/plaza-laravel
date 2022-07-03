@@ -1,8 +1,11 @@
+import Popper from "popper.js";
 import 'bootstrap';
 import $ from 'jquery';
 window.$ = window.jQuery = $;
+window.bootstrap = require('bootstrap');
 
 import 'jquery-ui/ui/widgets/autocomplete.js';
+
 
 
 $( "#search" ).autocomplete({

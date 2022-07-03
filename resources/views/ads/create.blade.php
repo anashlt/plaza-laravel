@@ -39,7 +39,8 @@
                         </div>
                         <div class="form-group"> 
                             <label for="city">City <span class="text-danger">*</span></label>
-                            <select class="form-control" id="city" name="city" required> 
+                            <select class="form-control selectpicker show-tick" data-live-search="true" id="city" name="city" required> 
+                                <option value="" selected disabled>Please select a city</option>
                             @foreach($cities as $city)    
                                 <option value="{{ $city->id }}">{{ $city->name }}</option> 
                             @endforeach
@@ -47,9 +48,14 @@
                         </div>
                         <div class="form-group">
                             <label for="category">Category <span class="text-danger">*</span></label>
-                            <select class="form-control" id="category" name="category" required>
-                            @foreach($categories as $category)    
+                            <select class="form-control selectpicker show-tick" data-live-search="true" id="category" name="category" required>
+                                <option value="" selected disabled>Please select a category</option>
+                            @foreach($categories as $category)   
+                                @if($category->parent_id == 0) 
+                                <optgroup label="{{ $category->name }}"> 
+                                @else 
                                 <option value="{{ $category->id }}">{{ $category->name }}</option> 
+                                @endif
                             @endforeach
                             </select>
                         </div>
@@ -73,4 +79,8 @@
 </div>
 
 
+@endsection
+
+@section('customjs')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js" defer></script>
 @endsection
