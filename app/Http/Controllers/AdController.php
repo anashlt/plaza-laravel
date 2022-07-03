@@ -33,7 +33,7 @@ class AdController extends Controller
     {
         return view('ads.create', [
             'cities' => \App\Models\City::where('is_active', 1)->get(),
-            'categories' => \App\Models\Category::where('parent_id', '!=', 0)->get(),
+            'categories' => \App\Models\Category::get(),
         ]);
     }
 
