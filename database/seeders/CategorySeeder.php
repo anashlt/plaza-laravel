@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class CategorySeeder extends Seeder
@@ -35,7 +35,7 @@ class CategorySeeder extends Seeder
 
             ['name' => 'Clothing and Jewellery', 'parent_id' => '', 'icon' => '/img/no-image.png', 'created_at' => Carbon::now(), 'slug' => 'clothing_and_jewellery'],
                 ['name' => 'Women', 'parent_id' => 13, 'icon' => '/img/no-image.png', 'created_at' => Carbon::now(), 'slug' => 'women'],
-                ['name' => 'Men', 'parent_id' => 13, 'icon' => '/img/no-image.png', 'created_at' => Carbon::now()], 'slug' => 'men',
+                ['name' => 'Men', 'parent_id' => 13, 'icon' => '/img/no-image.png', 'created_at' => Carbon::now(), 'slug' => 'men',
                 ['name' => 'Jewellery', 'parent_id' => 13, 'icon' => '/img/no-image.png', 'created_at' => Carbon::now(), 'slug' => 'jewellery'],
 
         ]);

@@ -8,6 +8,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class AdController extends Controller
 {
@@ -69,6 +70,18 @@ class AdController extends Controller
         ]);
 
         return view('ads.thank-you');
+    }
+
+    public function uploadImage(Request $request) 
+    {
+        $validated = $request->validate([
+            'avatar' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:6048'],
+        ]);
+
+        $imageName = time() . "_" . $request->avatar->getClientOriginalName();
+        $request->avatar->move(public_path('uploads'), $imageName);
+
+    	return response()->json(['uploaded' => "/uploads/".$imageName]);
     }
 
     /**

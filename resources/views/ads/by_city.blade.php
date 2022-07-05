@@ -21,7 +21,7 @@
                                         <i class="bi bi-calendar"></i> {{ $ad->created_at->diffForHumans() }}
                                     </p>
                                     <h5 class="fw-bold position-absolute top-0 end-0 mt-4 me-3">£ {{ number_format($ad->price) }}</h5>
-                                    <p class="position-absolute bottom-0 end-0 me-3"><i class="bi bi-heart"></i></p>
+                                    <p class="position-absolute bottom-0 end-0 me-3"><i class="bi bi-eye-fill"></i></p>
                             </div>
                         </div>
                     </div>

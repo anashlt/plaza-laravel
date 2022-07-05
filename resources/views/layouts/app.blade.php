@@ -8,8 +8,6 @@
 
     <title>@yield('title') {{ config('app.name', 'Plaza') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <!-- Styles -->
@@ -21,6 +19,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    @yield('customcss')
 </head>
 <body>
     <div id="app"  class="d-flex flex-column min-vh-100">
@@ -82,6 +81,10 @@
             </div>
         </footer>
     </div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+
     @yield('customjs')
 </body>
 </html>
