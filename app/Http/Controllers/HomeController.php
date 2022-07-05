@@ -98,7 +98,7 @@ class HomeController extends Controller
     {
         $ads = Post::where('is_published', 1)  // get only published ads
         ->with('category')
-        ->with('getCity')
+        ->with('city')
         ->get();
 
         return view('ads.browse', [

@@ -25,9 +25,9 @@ class Post extends Model
         'slug',
     ];
 
-    public function getCity()
+    public function city()
     {
-    	return $this->hasOne(City::class, 'id');
+    	return $this->belongsTo(City::class);
     }
 
     public function category() {
