@@ -12,7 +12,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item"><a href="/category/{{ $ad->category->slug }}">{{ $ad->category->name }}</a></li>
-                    <li class="breadcrumb-item"><a href="/category/{{ $ad->category->slug }}/city/{{ $ad->getCity->slug }}">{{ $ad->getCity->name }}</a></li>
+                    <li class="breadcrumb-item"><a href="/category/{{ $ad->category->slug }}/city/{{ $ad->city->slug }}">{{ $ad->city->name }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $ad->title }}</li>
                 </ol>
             </nav>     
