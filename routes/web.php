@@ -43,3 +43,5 @@ Route::get('/{category}/{city}/a/{slug}', [App\Http\Controllers\AdController::cl
 Route::get('/ads/post', [App\Http\Controllers\AdController::class, 'create'])->middleware('auth')->name('viewPostAdd');
 // Create post an ad 
 Route::post('/ads/post/create', [App\Http\Controllers\AdController::class, 'store'])->middleware('auth')->name('createPostAdd');
+// Ad images upload
+Route::post('/image-upload', [App\Http\Controllers\AdController::class, 'uploadImage']);
