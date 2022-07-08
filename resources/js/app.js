@@ -1,5 +1,4 @@
 import Popper from "popper.js";
-import 'bootstrap';
 import * as $ from "jquery";
 import * as bootstrap from "bootstrap";
 window.$ = window.jQuery = $;
@@ -73,4 +72,8 @@ $("#avatar").fileinput({
    },
 }).on("filebatchselected", function(event, files) {
    $("#avatar").fileinput("upload");
+}).on('fileuploaded', function(event, data, previewId, index, fileId) {
+   var form = data.form, files = data.files, extra = data.extra,
+   response = data.response, reader = data.reader;
+   $('form#createPostForm').append('<input type="hidden" name="pictures[]" value="'+response.uploaded+'" />');
 });

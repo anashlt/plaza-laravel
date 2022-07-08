@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use App\Models\PostPicture;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -19,7 +20,12 @@ class AdController extends Controller
      */
     public function index($city, $category, $slug)
     {
-        $ad = Post::where('slug', $slug)->where('is_published', 1)->with('category')->with('user')->first();
+        $ad = Post::where('slug', $slug)->where('is_published', 1)
+        ->with('category')
+        ->with('user')
+        ->with('pictures')
+        ->first();
+
         return view('ads.single', [
             'ad' => $ad
         ]);
@@ -46,19 +52,18 @@ class AdController extends Controller
      */
     public function store(StorePostRequest $data)
     {
-        $imagePath = $data->file('avatar');
-        $imageName = $imagePath->getClientOriginalName();
-        $path = $data->file('avatar')->storeAs('uploads', time().'_'.$imageName, 'public');
 
         $validated = $data->validate([
             'title' => ['required', 'string', 'max:80'],
-            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:6048'],
+            'pictures' => ['required', 'array', 'min:1'],
             'city' => ['required', 'integer'],
             'category' => ['required', 'integer'],
             'description' => ['required', 'string', 'max:600'],
         ]);
 
-        Post::create([
+        $path = $data['pictures'][0];
+
+        $id = Post::create([
             'title' => $data['title'],
             'avatar' => $path,
             'city_id' => $data['city'],
@@ -67,7 +72,15 @@ class AdController extends Controller
             'description' => $data['description'],
             'user_id' => Auth::id(),
             'slug' => Str::slug($data['title'], '_'),
-        ]);
+        ])->id;
+
+        foreach(array_slice($data['pictures'],1) as $picture) 
+        {
+            PostPicture::create([
+                'path' => $picture,
+                'post_id' => $id,
+            ]);
+        }
 
         return view('ads.thank-you');
     }

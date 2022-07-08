@@ -27,7 +27,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form method="post" action="/ads/post/create" enctype="multipart/form-data">
+                    <form id="createPostForm" method="post" action="/ads/post/create" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="title">Title <span class="text-danger">*</span></label>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label for="avatar">Picture <span class="text-danger">*</span></label>
-                            <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" multiple required>
+                            <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" multiple>
                         </div>
                         <div class="form-group"> 
                             <label for="city">City <span class="text-danger">*</span></label>
@@ -86,5 +86,5 @@
 @endsection
 
 @section('customcss')
-<link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+<link href="/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 @endsection
