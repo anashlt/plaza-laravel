@@ -32,6 +32,7 @@
         "bootstrap-fileinput": "^5.5.0",
         "bootstrap-icons": "^1.8.3",
         "bootstrap-select": "^1.13.18",
+        "jquery-easing": "0.0.1",
         "popper.js": "^1.16.1"
     }
 }

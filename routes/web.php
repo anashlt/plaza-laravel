@@ -45,3 +45,9 @@ Route::get('/ads/post', [App\Http\Controllers\AdController::class, 'create'])->m
 Route::post('/ads/post/create', [App\Http\Controllers\AdController::class, 'store'])->middleware('auth')->name('createPostAdd');
 // Ad images upload
 Route::post('/image-upload', [App\Http\Controllers\AdController::class, 'uploadImage']);
+
+// Admin dashboard
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
+    Route::get('/admin/posts', [App\Http\Controllers\AdminController::class, 'posts']);
+});
