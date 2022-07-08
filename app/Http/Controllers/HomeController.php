@@ -27,6 +27,7 @@ class HomeController extends Controller
         $categoryId = Category::where('slug', $category)->first()->id;
         $ads = Post::where('category_id', $categoryId)
         ->where('is_published', 1)
+        ->orderBy('created_at', 'DESC')
         ->get();
 
         return view('ads.by_category', [
@@ -41,6 +42,7 @@ class HomeController extends Controller
         $ads = Post::where('category_id', $categoryId)
         ->where('is_published', 1)  // get only published ads
         ->where('city_id', $cityId)
+        ->orderBy('created_at', 'DESC')
         ->get();
 
         return view('ads.by_city', [
@@ -99,6 +101,7 @@ class HomeController extends Controller
         $ads = Post::where('is_published', 1)  // get only published ads
         ->with('category')
         ->with('city')
+        ->orderBy('created_at', 'DESC')
         ->get();
 
         return view('ads.browse', [

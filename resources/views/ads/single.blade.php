@@ -20,7 +20,43 @@
         <div class="row">
             <div class="col-md-8 bg-white">
                 <div style="padding:10px">
-                    <img src="{{ $ad->avatar }}" alt="{{ $ad->title }}" class="rounded mx-auto d-block img-fluid">    
+                    <div id="custCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{{ $ad->avatar }}" class="d-block w-100" alt="{{ $ad->title }}">
+                            </div>
+                            @foreach($ad->pictures as $picture)
+                            <div class="carousel-item">
+                                <img src="{{ $picture->path }}" class="d-block w-100" alt="{{ $ad->title }}">
+                            </div>
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#custCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#custCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                        <!-- Thumbnails -->
+                        <ol class="carousel-indicators list-inline">
+                        <li class="list-inline-item active">
+                            <a id="carousel-selector-0" class="selected" data-bs-slide-to="0" data-bs-target="#custCarousel">
+                            <img src="{{ $ad->avatar }}" class="img-fluid">
+                            </a>
+                        </li>
+                        
+                        @foreach($ad->pictures as $k => $picture)
+                            <li class="list-inline-item">
+                                <a id="carousel-selector-{{$k+1}}" data-bs-slide-to="{{$k+1}}" data-bs-target="#custCarousel">
+                                <img src="{{ $picture->path }}" class="img-fluid">
+                                </a>
+                            </li>
+                        @endforeach
+                        </ol>
+                    </div>
                 </div> 
             </div>
             <div class="col-md-4">
@@ -43,4 +79,40 @@
 </div>
 
 
+@endsection
+
+@section('customcss')
+<style>
+.carousel-inner img {
+      width: 100%;
+      height: 100%;
+  }
+
+#custCarousel .carousel-indicators {
+    position: static;
+    margin-top:20px;
+}
+
+#custCarousel .carousel-indicators > li {
+  width:100px;
+}
+
+ #custCarousel .carousel-indicators li img {
+    display: block;
+    opacity: 0.5;
+ }
+
+  #custCarousel .carousel-indicators li.active img {
+    opacity: 1;
+  }
+
+  #custCarousel .carousel-indicators li:hover img {
+    opacity: 0.75;
+  }
+
+  .carousel-item img{
+
+    width:80%;
+  }
+  </style>
 @endsection
