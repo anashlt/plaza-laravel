@@ -19088,6 +19088,7 @@ body {
   border-radius: 1rem;
   overflow: hidden;
   border-radius: 50px;
+  padding: 10px;
 }
 
 .portfolio .portfolio-item .portfolio-item-caption {
@@ -19105,6 +19106,13 @@ body {
 
 .portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
   font-size: 1.5rem;
+}
+
+.catTitle {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: #0a454c;
 }
 
 .portfolio-modal .btn-close {
