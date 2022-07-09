@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="container">
+
 @include('components.search-bar')
         <!-- Categories Section-->
         <section class="page-section portfolio bg-white pt-4" id="portfolio">
@@ -25,4 +28,6 @@
               </div>
           </div>
       </section>
+
+</div>
 @endsection
