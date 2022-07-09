@@ -60,9 +60,9 @@ class HomeController extends Controller
         $cityId = City::where('name', $request->get('c'))->first()->id ?? '';
 
         $ads = Post::when(empty($cityId),function($query) use ($request) {
-                $query->where('title', 'LIKE', $request->get('q'). '%');
+                $query->where('is_published', 1)->where('title', 'LIKE', $request->get('q'). '%');
             } , function($query) use ($request, $cityId){
-                    $query->where('title', 'LIKE', $request->get('q'). '%')
+                    $query->where('is_published', 1)->where('title', 'LIKE', $request->get('q'). '%')
                         ->where('city_id', $cityId);
             })->get(); 
             

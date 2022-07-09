@@ -27,10 +27,9 @@
         <nav class="navbar navbar-expand-lg bg-cyan text-uppercase" id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="/"><img src="/img/logo.png" alt="Plaza"></a>
-                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
+                <button class="navbar-toggler hamBtn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list"></i>
+                </button>    
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1">

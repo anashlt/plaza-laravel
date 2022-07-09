@@ -172,22 +172,33 @@ body {
     }
   }
 
-  .post .card {
-    flex-direction: row;
-    align-items: center;
+  .postImg {
+    height: 140px;
+    object-fit: cover;
+    border-radius: 0;
   }
-  .post .card-title {
-    font-weight: bold;
+
+  .card-title, .postPrice {
+    color: #333;
+    font-weight: 500;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
-  .post .card img {
-    width: 18%;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: calc(0.25rem - 1px);
-  }
+
   @media only screen and (max-width: 768px) {
-    a {
+    .geoIcon, #scity {
       display: none;
     }
+
+    #search {      
+      font-size: 14px;
+    }
+
+    .hamBtn {
+      color: #fff;
+      font-size: 180% !important;
+      font-weight: 800;
+    }
+    
     .post .card-body {
       padding: 0.5em 1.2em;
     }
