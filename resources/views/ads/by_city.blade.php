@@ -16,19 +16,19 @@
                                 <div id="carousel-{{$ad->id}}" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-indicators">
                                         <button type="button" data-bs-target="#carousel-{{$ad->id}}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                        <button type="button" data-bs-target="#carousel-{{$ad->id}}" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                        <button type="button" data-bs-target="#carousel-{{$ad->id}}" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                        @foreach($ad->pictures as $key => $picture)
+                                        <button type="button" data-bs-target="#carousel-{{$ad->id}}" data-bs-slide-to="{{ $key+1 }}" aria-label="Slide {{ $key+1 }}"></button>
+                                        @endforeach
                                     </div>
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
                                         <img src="{{ asset($ad->avatar) }}" class="card-img postImg d-block w-100" alt="...">
                                         </div>
+                                        @foreach($ad->pictures as $picture)
                                         <div class="carousel-item">
-                                        <img src="{{ asset($ad->avatar) }}" class="card-img postImg d-block w-100" alt="...">
+                                            <img src="{{ $picture->path }}" class="card-img postImg d-block w-100" alt="{{ $ad->title }}">
                                         </div>
-                                        <div class="carousel-item">
-                                        <img src="{{ asset($ad->avatar) }}" class="card-img postImg d-block w-100" alt="...">
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carousel-{{$ad->id}}" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
