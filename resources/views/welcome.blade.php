@@ -15,12 +15,12 @@
                 @foreach($categories as $category)
                 <div class="col-md-2 col-lg-2 mb-5">
                     <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                      <a href="/category/{{ $category->slug }}">
+                      <a href="/category/{{ $category->slug }}" style="text-decoration:none">
                         <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                             <div class="portfolio-item-caption-content text-center text-white"><i class="bi bi-plus"></i></div>
                         </div>
                         <img class="img-fluid" src="{{ $category->icon }}" alt="..." />
-                        <p class="text-center">{{ $category->name }}</p>
+                        <p class="text-center catTitle">{{ $category->name }}</p>
                       </a>
                     </div>
                 </div>
