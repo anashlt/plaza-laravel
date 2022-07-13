@@ -2,12 +2,13 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
+use Faker;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
  
 
 class UserSeeder extends Seeder
@@ -19,10 +20,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker\Factory::create();
         // Dummy users
         DB::table('users')->insert([
-            ['name' => Str::random(10), 'email' => Str::random(10).'@gmail.com', 'password' => Hash::make('password'), 'created_at' => Carbon::now(), 'phone' => rand(100000000,999999999)],
-            ['name' => Str::random(10), 'email' => Str::random(10).'@gmail.com', 'password' => Hash::make('password'), 'created_at' => Carbon::now(), 'phone' => rand(100000000,999999999) ],
+            ['name' => 'Admin Account', 'email' => 'admin@admin.com', 'password' => Hash::make('admin123'), 'created_at' => Carbon::now(), 'phone' => $faker->phoneNumber, 'is_admin' => '1'],
+            ['name' => $faker->name, 'email' => $faker->email, 'password' => Hash::make('password'), 'created_at' => Carbon::now(), 'phone' => $faker->phoneNumber, 'is_admin' => '0'],
+            ['name' => $faker->name, 'email' => $faker->email, 'password' => Hash::make('password'), 'created_at' => Carbon::now(), 'phone' => $faker->phoneNumber, 'is_admin' => '0'],
+            ['name' => $faker->name, 'email' => $faker->email, 'password' => Hash::make('password'), 'created_at' => Carbon::now(), 'phone' => $faker->phoneNumber, 'is_admin' => '0'],
         ]);
     }
 }
