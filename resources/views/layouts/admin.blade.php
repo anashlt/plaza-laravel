@@ -12,6 +12,8 @@
     <link href="/css/font-awesome-all.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    
+    @yield('customcss')
 </head>
 <body class="bg-gradient-info">
     <!-- Page Wrapper -->
@@ -43,14 +45,14 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Posts
+            Manage
         </div>
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="/admin/posts">
                 <i class="fas fa-fw fa-table"></i>
-                <span>List</span></a>
+                <span>Posts</span></a>
         </li>
 
         <!-- Divider -->
@@ -209,6 +211,8 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- Custom scripts for all pages-->
     <script src="/js/sb-admin-2.min.js"></script>
+
+    @yield('customjs')
 
 </body>
 </html>

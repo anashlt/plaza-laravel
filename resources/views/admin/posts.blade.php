@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('customcss')
+<link href="/css/jquery.dataTables.min.css" rel="stylesheet">
+@endsection
+
 @section('content')
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -9,90 +13,77 @@
         <h1 class="h3 mb-0 text-gray-800">Posts</h1>
     </div>
 
-    <div class="row">
+    <table id="postsTable" class="table table-hover table-bordered" style="width:100%;background:#fff">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Publisher</th>
+                <th>Is Published?</th>
+                <th>City</th>
+                <th>Created at</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($posts as $post)
+            <tr>
+                <td>{{ $post->title }}</td>
+                <td>{{ \App\Models\User::find($post->user_id)->name }}</td>
+                <td>
+                    @if ($post->is_published)
+                        <span style="color: green;">Yes</span>
+                    @else
+                        <span style="color: red;">No</span>
+                    @endif
+                </td>
+                <td>{{ \App\Models\City::find($post->city_id)->name }}</td>
+                <td>{{ $post->created_at->diffForHumans() }}</td>
+                <td>
+                    <a href="/admin/post/{{ $post->id }}"><button type="button" class="btn btn-primary">Edit</button></a>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+        <tfoot>
+            <tr>
+            <th>Title</th>
+                <th>Category</th>
+                <th>City</th>
+                <th>Publisher</th>
+                <th>Is Published?</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+    </table>
 
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Total posts</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
+    <!-- Modal HTML -->
+<div id="deleteModal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header flex-column">					
+				<h5 class="modal-title">Are you sure?</h5>	
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
             </div>
-        </div>
-
-        <!-- Earnings (Annual) Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Published posts</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tasks Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total users
-                            </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pending Requests Card Example -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Pending Posts</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+			<div class="modal-body">
+				<p>Do you really want to delete these records? This process cannot be undone.</p>
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-danger">Delete</button>
+			</div>
+		</div>
+	</div>
+</div>
 </div>
 <!-- /.container-fluid -->
+@endsection
+
+@section('customjs')
+<script src="/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready( function () {
+        $('#postsTable').DataTable();
+    });
+</script>
 @endsection
