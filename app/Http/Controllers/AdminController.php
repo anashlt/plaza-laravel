@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
+use App\Models\City;
 
 class AdminController extends Controller
 {
@@ -25,6 +27,22 @@ class AdminController extends Controller
 
     public function posts()
     {
-        return view('admin.posts');
+        $posts = Post::all();
+        return view('admin.posts', [
+            'posts' => $posts,
+        ]);
+    }
+
+    public function editPost(int $postId)
+    {
+        $post = Post::find($postId);
+        $categories = Category::get();
+        $cities = City::get();
+
+        return view('admin.editPost', [
+            'post' => $post,
+            'categories' => $categories,
+            'cities' => $cities,
+        ]);
     }
 }

@@ -50,4 +50,5 @@ Route::post('/image-upload', [App\Http\Controllers\AdController::class, 'uploadI
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
     Route::get('/admin/posts', [App\Http\Controllers\AdminController::class, 'posts']);
+    Route::get('/admin/post/{id}', [App\Http\Controllers\AdminController::class, 'editPost']);
 });
